@@ -28,17 +28,17 @@ public abstract class HierarchyBenchmarkBase
         _leafChangeRoot.EvaluateIncremental(Vector2.Zero);
     }
 
-    [Benchmark(Baseline = true)]
+    [Benchmark(Baseline = true, Description = "GES-HIER-FULL-REEVALUATION")]
     public int FullReevaluation()
     {
         _fullRoot.EvaluateFull(Vector2.Zero);
         return NodeCount;
     }
 
-    [Benchmark]
+    [Benchmark(Description = "GES-HIER-INCREMENTAL-NOOP")]
     public int IncrementalNoOp() => _incrementalRoot.EvaluateIncremental(Vector2.Zero);
 
-    [Benchmark]
+    [Benchmark(Description = "GES-HIER-INCREMENTAL-LEAF-CHANGE")]
     public int IncrementalLeafChange()
     {
         _nextLeafAngle = -_nextLeafAngle;
@@ -147,7 +147,7 @@ public class CrowdGestureEvaluationBenchmarks
         _variation.Validate();
     }
 
-    [Benchmark(Baseline = true)]
+    [Benchmark(Baseline = true, Description = "GES-CROWD-SHARED-POSE")]
     public double SharedPoseEvaluation()
     {
         var checksum = 0d;
@@ -156,7 +156,7 @@ public class CrowdGestureEvaluationBenchmarks
         return checksum;
     }
 
-    [Benchmark]
+    [Benchmark(Description = "GES-CROWD-PER-AGENT-VARIATION")]
     public double PerAgentVariationEvaluation()
     {
         var checksum = 0d;
