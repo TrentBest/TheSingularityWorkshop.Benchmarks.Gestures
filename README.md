@@ -43,7 +43,7 @@ Then run:
 dotnet run --project src/TheSingularityWorkshop.Benchmarks.Gestures -c Release
 ```
 
-The CI workflow pins the Gestures source checkout to a commit SHA. Update the pin intentionally when changing the implementation revision under test.
+The CI workflow pins the Gestures source checkout to a commit SHA. Pushes and pull requests run Dry smoke cases for all three suites; choose the **full** profile from Actions → Gestures benchmarks → Run workflow for actual BenchmarkDotNet measurements and retained reports. Update the source pin intentionally when changing the implementation revision under test.
 
 ## Evidence rules
 
