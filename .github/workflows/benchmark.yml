@@ -33,6 +33,23 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
+      - name: Capture benchmark provenance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p TheSingularityWorkshop.Benchmarks.Gestures/results/environment
+          {
+            echo "benchmark_repository=TrentBest/TheSingularityWorkshop.Benchmarks.Gestures"
+            echo "benchmark_commit=$(git -C TheSingularityWorkshop.Benchmarks.Gestures rev-parse HEAD)"
+            echo "source_repository=TrentBest/TheSingularityWorkshop.Gestures"
+            echo "source_commit=$(git -C TheSingularityWorkshop.Gestures rev-parse HEAD)"
+            echo "captured_at_utc=$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "runner_os=$(uname -a)"
+            echo
+            dotnet --info
+            echo
+            lscpu
+          } > TheSingularityWorkshop.Benchmarks.Gestures/results/environment/manifest.txt
       - name: Build benchmark harness
         run: dotnet build TheSingularityWorkshop.Benchmarks.Gestures/src/TheSingularityWorkshop.Benchmarks.Gestures/TheSingularityWorkshop.Benchmarks.Gestures.csproj --configuration Release
       - name: Run full Gestures measurements
@@ -51,5 +68,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: gestures-benchmark-artifacts
-          path: BenchmarkDotNet.Artifacts
+          path: |
+            BenchmarkDotNet.Artifacts/**
+            TheSingularityWorkshop.Benchmarks.Gestures/results/environment/**
           if-no-files-found: warn
