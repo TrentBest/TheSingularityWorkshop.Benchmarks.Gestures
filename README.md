@@ -1,4 +1,19 @@
+<p align="center">
+  <a href="https://github.com/TrentBest/TheSingularityWorkshop.Visualize">
+    <img src="https://raw.githubusercontent.com/TrentBest/TheSingularityWorkshop.Visualize/development/docs/assets/moniker.svg" alt="The Singularity Workshop" width="720" />
+  </a>
+</p>
+
 # TheSingularityWorkshop.Benchmarks.Gestures
+
+[![Benchmarks](https://github.com/TrentBest/TheSingularityWorkshop.Benchmarks.Gestures/actions/workflows/benchmark.yml/badge.svg?branch=development)](https://github.com/TrentBest/TheSingularityWorkshop.Benchmarks.Gestures/actions/workflows/benchmark.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Last commit](https://img.shields.io/github/last-commit/TrentBest/TheSingularityWorkshop.Benchmarks.Gestures/development)](https://github.com/TrentBest/TheSingularityWorkshop.Benchmarks.Gestures/commits/development)
+
+[![Sith Policy](assets/sith-policy.svg)](https://github.com/TrentBest/TheSingularityWorkshop.Benchmarks.Gestures/actions/workflows/sith-policy.yml)
+
+Dedicated performance experiments for the Gestures package.
+
 
 Dedicated, reproducible benchmarks for the Gesture CPU reference implementation. The initial suite is ported from the benchmark project already present in the Gestures source repository; this repository establishes an independent benchmark home without changing the package implementation.
 
@@ -38,3 +53,5 @@ The CI workflow pins the Gestures source checkout to a commit SHA. Update the pi
 - A performance result is not a correctness, regression, or release verdict by itself.
 - These benchmarks do not imply GPU performance or rendering throughput.
 - No benchmark result authorizes publishing, merging, deployment, or release.
+
+<p align="center"><img src="https://raw.githubusercontent.com/TrentBest/FSM_API/master/Documentation/Branding/TheSingularityWorkshop.png" alt="The Singularity Workshop" width="200" /></p>
