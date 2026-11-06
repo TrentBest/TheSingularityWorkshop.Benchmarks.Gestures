@@ -1,1 +1,40 @@
 # TheSingularityWorkshop.Benchmarks.Gestures
+
+Dedicated, reproducible benchmarks for the Gesture CPU reference implementation. The initial suite is ported from the benchmark project already present in the Gestures source repository; this repository establishes an independent benchmark home without changing the package implementation.
+
+## Experiments
+
+| Suite | What it measures | Scale |
+|---|---|---|
+| ChainHierarchyBenchmarks | Full hierarchy reevaluation vs incremental no-op and leaf-change evaluation | 10, 100, 1,000 joints |
+| BranchingHierarchyBenchmarks | Same comparison over a balanced branching hierarchy | 10, 100, 1,000, 10,000 joints |
+| CrowdGestureEvaluationBenchmarks | Shared pose evaluation vs per-agent variation evaluation | 1,000; 10,000; 100,000; 1,000,000 agents |
+
+Crowd variation samples are deterministic and prepared outside timed methods. This suite isolates evaluator cost; it does not measure keyed random sampling, Physics integration, rigging, or rendering. The benchmark source and its scope comments are retained from the package's existing harness.
+
+## Run locally
+
+Clone this repository beside the Gestures source repository:
+
+```text
+workspace/
+  TheSingularityWorkshop.Benchmarks.Gestures/
+  TheSingularityWorkshop.Gestures/
+```
+
+Then run:
+
+```bash
+dotnet run --project src/TheSingularityWorkshop.Benchmarks.Gestures -c Release
+```
+
+The CI workflow pins the Gestures source checkout to a commit SHA. Update the pin intentionally when changing the implementation revision under test.
+
+## Evidence rules
+
+- BenchmarkDotNet memory diagnostics are enabled.
+- Fixture creation is performed in global setup, outside timed benchmark methods.
+- Compare results only across equivalent hardware, runtime, source revision, and benchmark revision.
+- A performance result is not a correctness, regression, or release verdict by itself.
+- These benchmarks do not imply GPU performance or rendering throughput.
+- No benchmark result authorizes publishing, merging, deployment, or release.
