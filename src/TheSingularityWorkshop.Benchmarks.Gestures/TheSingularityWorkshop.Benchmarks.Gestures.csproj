@@ -9,6 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
-    <ProjectReference Include="../../TheSingularityWorkshop.Gestures/src/TheSingularityWorkshop.Gestures/TheSingularityWorkshop.Gestures.csproj" />
+    <ProjectReference Include="../../../TheSingularityWorkshop.Gestures/src/TheSingularityWorkshop.Gestures/TheSingularityWorkshop.Gestures.csproj" />
   </ItemGroup>
 </Project>
